@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染</title>
+	<script src="./js/vue.js"></script>
+	<script>
+		/**
+		 * v-if 有更高的切换消耗而 v-show 有更高的初始渲染消耗。因此，如果需要频繁切换 v-show 较好，如果在运行时条件不大可能改变 v-if 较好。
+		 */
+	</script>	
+</head>
+<body>
+
+<h1 v-if="false">Hello</h1>
+<h1 v-else>No</h1>
+
+<!-- template -->
+<template v-if="ok">
+	<h1>Title</h1>
+	<p>Paragraph 1</p>
+	<p>Paragraph 2</p>
+</template>
+	
+
+<h1 v-show="ok">Hi</h1>
+
+<div v-if="Math.random() > 0.5">
+	Sorry
+</div>
+<div v-else>
+	Not sorry
+</div>
+
+<script>
+	var vm = new Vue({
+		el:'h1',
+		data:{
+			ok:false
+		}
+	})
+	
+</script>
+</body>
+</html>

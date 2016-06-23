@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue实例</title>
+	<script src="./js/vue.js"></script>
+	<script>
+		/**
+		 * 所有的Vue.js组件都是被扩展的Vue实例
+		 * 
+		 * 
+		 */
+	</script>
+</head>
+<body>
+
+<div id="example"></div>
+	
+<script>
+	// viewModel
+	var vm = new Vue({
+		// 选项(数据、模板、挂载元素、方法、生命周期钩子等选项)
+		
+	})
+	// 扩展vue构造器 
+	var MyComponent = Vue.extend({
+		//扩展选项
+	})
+
+	// 实例化
+	var myComponentInstance = new MyComponent();
+
+
+	//属性和方法
+	var data = {a:1};
+	var vm1 = new Vue({
+		el: '#example',
+		data: data
+	})
+	alert(vm1.a === data.a); // true
+
+	// 设置属性也会影响到原始数据
+	vm1.a = 2;
+	alert(data.a); // 2
+
+	//反之也是
+	
+
+	//与代理的数据属性区别
+	vm1.$data === data; //true
+	vm1.$el === document.getElementById("example"); //true
+
+	// $watch是一个实例方法
+	vm1.$watch('a',function(newVal,oldVal){
+		// 回调将在vm.a改变后调用
+		
+	})
+
+	//实例生命周期  created 钩子
+	var vm2 = new Vue({
+		data: {
+			a:1
+		},
+		created: function(){
+			//this 指向vm实例
+			console.log('a is:'+ this.a);
+		},
+		compiled:function(){
+
+		},
+		ready:function(){
+
+		},
+		destroyed: function(){
+			
+		}
+	})
+
+	
+
+
+</script>
+</body>
+</html>

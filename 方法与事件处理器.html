@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>方法与事件处理器</title>
+	<script src="./js/vue.js"></script>	
+	<script>
+			
+	</script>
+</head>
+<body>
+
+<div id="example">
+	<button v-on:click="greet">Greet</button>
+</div>
+
+<div id="example-2">
+	<button v-on:click="say('hi',$event);">Say Hi</button>
+	<button v-on:click="say('what',$event);">Say What</button>
+</div>
+
+
+<input v-on:keyup.13="submit">
+<input v-on:keyup.enter="submit">
+<input @keyup.enter="submit">
+
+<script>
+	var vm = new Vue({
+		el: '#example',
+		data:{
+			name:'Vue.js'
+		},
+		methods:{
+			greet:function(event){
+				alert('Hello'+this.name+'!');
+				alert(event.target.tagName);
+			}
+		}
+	})
+
+	var vm2 = new Vue({
+		el: '#example-2',
+		methods:{
+			say:function(msg,event){
+				alert(msg);
+				event.preventDefault();
+			}
+		}
+	})
+</script>
+	
+</body>
+</html>

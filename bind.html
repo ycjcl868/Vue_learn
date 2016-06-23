@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数据绑定语法</title>
+	<script src="./js/vue.js"></script>
+	<script>
+		/**
+		 * 
+		 */
+	</script>
+</head>
+<body>
+
+<span>Message: {{ msg }}</span>
+
+
+<!-- 今后的数据变化就不会再引起插值更新了 -->
+<span>This will never change: {{* msg }}</span>
+
+<div id="item-{{ id }}"></div>
+
+{{ num + 1 }}
+{{ var a = 1 }}
+
+<a v-bind:href="url">1</a>
+<a v-on:click="alert(2);">2</a>
+
+
+<!-- 简写： -->
+<a :href="url">1</a>
+<a @click="alert(2);">2</a>
+
+
+
+</body>
+</html>

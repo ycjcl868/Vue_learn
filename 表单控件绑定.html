@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件绑定</title>
+	<script src="./js/vue.js"></script>	
+	<script>
+		/**
+		 * v-model 指令在表单控件元素上创建双向数据绑定。
+		 */
+	</script>
+</head>
+<body>
+	<span>Message is: {{ message }}</span>
+	<br />
+	<input type="text" v-model="message" placeholder="edit">
+	
+
+	<input type="checkbox" id="checkbox" v-model="checked">
+	<label for="checkbox">{{ checked }}</label>
+
+	
+	<!-- 延时500 -->
+	<span>{{ msg }}</span>
+	<input v-model="msg" debounce="500">
+	<script>
+		var vm = new Vue({
+			el: 'body',
+			data:{
+				message:'',
+				checked:false,
+				msg:''
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VueJS 1</title>
+	<script src="./js/vue.js"></script>
+	<script>
+		/**
+		 * 起步
+		 * Vue.js 拥抱数据驱动的视图概念
+		 * MVVM模式
+		 */
+	</script>
+</head>
+<body>
+<div id="app">
+  <input v-model="newTodo" v-on:keyup.enter="addTodo">
+  <ul>
+    <li v-for="todo in todos">
+      <span>{{ todo.text }}</span>
+      <button v-on:click="removeTodo($index)">X</button>
+    </li>
+  </ul>
+</div>
+
+
+<div id="example-2">
+<!-- v-if 特性被称为指令。指令带有前缀 v- ，接受greeting的值, 如果为真，就显示 -->
+	<p v-if="greeting">Hello!</p>
+</div>
+
+
+<script>
+var exampleVM2 = new Vue({
+	el: '#example-2',
+	data:{
+		greeting:false   
+	}
+})
+new Vue({
+  el: '#app',
+  data: {
+    newTodo: '',
+    todos: [
+      { text: 'Add some todos' }
+    ]
+  },
+  methods: {
+    addTodo: function () {
+      var text = this.newTodo.trim()
+      if (text) {
+        this.todos.push({ text: text })
+        this.newTodo = ''
+      }
+    },
+    removeTodo: function (index) {
+      this.todos.splice(index, 1)
+    }
+  }
+})
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Class和Style绑定</title>
+	<script src="./js/vue.js"></script>
+	<script>
+		/**
+		 * v-bind用于class和style
+		 */
+	</script>
+</head>
+<body>
+ <div class="static" v-bind:class="{'class-a':isA, 'class-b':isB}"></div>
+	
+<div class="static2" v-bind:style="{color:activeColor,transform:abc,fontSize:fontSize + 'px'}">Hello</div>
+
+
+<div class="static3" v-bind:class="classObject"></div>
+
+<script>
+	var vm = new Vue({
+		el: ".static",
+		data: {
+			isA: true,
+			isB: false
+		}
+	})
+	var vm2 = new Vue({
+		el: ".static2",
+		data: {
+			activeColor: 'red',
+			fontSize: 30,
+			abc:'translate(12px,50%)'
+		}
+	})
+	var vm3 = new Vue({
+		el: ".static3",
+		data:{
+			classObject:{
+				'class-a':true,
+				'class-b':false
+			}
+		}
+	})
+</script>
+</body>
+</html>

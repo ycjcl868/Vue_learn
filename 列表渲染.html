@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>列表渲染</title>
+	<script src="./js/vue.js"></script>	
+	<script>
+		
+	</script>
+</head>
+<body>
+	<ul id="example-1">
+		<li v-for="item in items">
+			{{  item.message }}
+		</li>
+	</ul>
+
+ 
+ 	<!-- $index为自带序号属性 -->
+	<ul id="example-2">
+		<li v-for="item in items">  
+			{{parentMessage}} - {{$index}} - {{item.message}}
+		</li>
+	</ul>
+
+	<!-- 遍历对象 -->
+<!-- 	<li v-for="(key,val) in object">
+		{{key}} : {{val}}
+	</li> -->
+	<ul id="repeat-object" class="demo">
+		<li v-for="value in object">
+			{{$key}} : {{value}}
+		</li>
+	</ul>
+
+<script>
+	var example1 = new Vue({
+		el: '#example-1',
+		data:{
+			items:[
+				{message: 'Foo'},
+				{message: 'Hello'},
+				{message: 'World'},
+				{message: 'Boor'},
+				{message: 'Keen'},
+				{message: 'Coon'}
+			]
+		}
+	})
+
+	var example2 = new Vue({
+		el: '#example-2',
+		data:{
+			parentMessage: 'Parent',
+			items: [
+				{message: 'Foo'},
+				{message: 'Bar'},
+			]
+		}
+	})
+
+	var example3 = new Vue({
+		el :'#repeat-object',
+		data: {
+			object: {
+				FirstName:'John',
+				LastName:'Doe',
+				Age:30				
+			}
+		}
+	})
+	
+</script>
+</body>
+</html>
