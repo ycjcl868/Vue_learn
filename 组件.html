@@ -11,6 +11,53 @@
 	</script>	
 </head>
 <body>
+
+
+<div id="example">
+	<my-component></my-component>
+	<child msg="hello!"></child>
+</div>
+
+
+
+<script>
+
+	Vue.component('child',{
+		props:['msg'],
+		template:'<span>{{ msg }}</span>'
+	})
+	new Vue({
+		el: '#example'
+	})
+	// 组件构造器，定义
+	var MyComponent = Vue.extend({
+		//选项
+		template: '<div>A custom component!</div>'
+	})
+
+	//作组件，注册
+	Vue.component('my-component',MyComponent);
+
+	//创建根实例
+	new Vue({
+		el :'#example'
+	})
+
+	//局部注册
+	// var data = {a:1};
+	// var Child = Vue.extend({});
+	// var Parent = Vue.extend({
+	// 	data:data,
+	// 	template: '...',
+	// 	components:{
+	// 		'my-component':Child,
+	// 		'h-component':'<div>A custom component!</div>'
+
+	// 	}
+	// })
+
+
+</script>
 	
 </body>
 </html>
