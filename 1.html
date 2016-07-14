@@ -31,31 +31,28 @@
 
 
 <script>
-var exampleVM2 = new Vue({
-	el: '#example-2',
-	data:{
-		greeting:false   
-	}
-})
-new Vue({
-  el: '#app',
-  data: {
-    newTodo: '',
-    todos: [
-      { text: 'Add some todos' }
-    ]
-  },
-  methods: {
-    addTodo: function () {
-      var text = this.newTodo.trim()
-      if (text) {
-        this.todos.push({ text: text })
-        this.newTodo = ''
-      }
-    },
-    removeTodo: function (index) {
-      this.todos.splice(index, 1)
+Vue.component('manage-posts', {
+  template: '#manage-template',
+  data: function() {
+    return {
+      posts: [
+        'Vue.js: The Basics',
+        'Vue.js Components',
+        'Server Side Rendering with Vue',
+        'Vue + Firebase'
+      ]
     }
+  }
+})
+
+Vue.component('create-post', {
+  template: '#create-template'
+})
+
+new Vue({
+  el: 'body',
+  data: {
+    currentView: 'manage-posts'
   }
 })
 	</script>

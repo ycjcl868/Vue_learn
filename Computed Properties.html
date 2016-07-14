@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Computed Properties</title>
+
+	<script src="./js/vue.js"></script>	
+</head>
+<body>
+<p>{{first}} - {{last}}</p>
+	<input type="text" v-model="first">
+	<input type="text" v-model="last">
+<h1>Skill:{{ points <= 100 ? 'Beginner' : 'Intermediate' }}</h1>
+<!-- 写法2 -->
+<h1>Skill: {{skill}}</h1>
+
+<script>
+	new Vue({
+		el:'body',
+		data:{
+			points:200,
+			skill:'',
+			first:'Kylin',
+			last:'King'
+		},
+		computed:{
+			skill:function(){
+				if(this.point <= 100){
+					return 'Beginner';
+				}else{
+					return 'Intermedia'
+				}
+			}
+		},
+		watch:{
+
+		}
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>A Peek into Components</title>
+	<style>
+		body,html{height: 100%;}
+		#app{display: flex;height: 100%;justify-content: center;align-items: center;}		
+	</style>
+</head>
+<body>
+	
+<div id="app">
+<input type="color">
+	<counter subject="Likes"></counter>
+	<counter subject="dislikes"></counter>
+</div>
+
+<template id="counter-template">
+	<h1>{{subject}}</h1>
+	<button @click="count++">Increment {{count}}</button>
+</template>
+
+<script src="./js/vue.js"></script>	
+<script>
+	Vue.component('counter', {
+		template:'#counter-template',
+		props:['subject'],
+		data:function(){
+			return {count: 0}; 
+		}
+
+	});
+	new Vue({
+		el:'#app'
+		// data:{
+		// 	count:0
+		// },
+
+	});
+
+	//写法2：
+	new Vue({
+		el:'#app2',
+		components:{
+			counter:{
+				template:'#counter-template',
+				props:['subject'],
+				data:function(){
+					return {count: 0}; 
+				}				
+			}
+		}
+	})
+</script>	
+</body>
+</html>

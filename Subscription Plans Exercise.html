@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Subscription Plans Exercise</title>
+	<script src="./js/vue.js"></script>
+	<script>
+		
+	</script>
+</head>
+<body>
+
+<div id="app">
+	<div v-for="plans in plans">
+		<plan :planabc="plans" :active.sync="active" inline-template></plan>
+	</div>
+</div>
+
+
+<template id="plan-template">
+<pre>{{ $data |json }}</pre>
+	<div>
+		<span>{{ planabc.name }}</span>
+		<span>{{ planabc.price }} / month</span>
+	</div>
+	<button @click="setActionPlan" 
+			v-show="plan.name !== active.name">
+			{{isUpgrade ? 'Upgrade' : 'Downgrade'}}
+	</button>
+	<span v-else>Selected</span>
+</template>
+
+<script>
+	new Vue({
+		el:'#app',
+		data:{
+			plans:[
+				{name:'Enterprice',price:100},
+				{name:'Pro',price:120},
+				{name:'personal',price:10},
+				{name:'Free',price:0}
+			],
+			active:{}
+
+		},
+		components:{
+			plan:{
+				template:'#plan-template',
+				props:['planabc','active'],
+				computed:{
+					isUpgrade: function(){
+						return this.planabc.price > this.active.price;
+						// this.plan.price
+						// this.active.price
+					}
+				},
+				data:function(){
+					return{
+						active:false
+					}
+				},
+				methods:{
+					setActionPlan:function(){
+						this.active = this.planabc;
+					}
+				}					
+			},
+		
+		},
+
+	})
+</script>
+	
+</body>
+</html>
